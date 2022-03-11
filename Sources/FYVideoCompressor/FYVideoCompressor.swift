@@ -94,6 +94,16 @@ public class FYVideoCompressor {
             fileType: .mp4,
             scale: nil
         )
+
+        public init(videoBitrate: Int, videomaxKeyFrameInterval: Int, fps: Float, audioSampleRate: Int, audioBitrate: Int, fileType: AVFileType, scale: CGSize? = nil) {
+            self.videoBitrate = videoBitrate
+            self.videomaxKeyFrameInterval = videomaxKeyFrameInterval
+            self.fps = fps
+            self.audioSampleRate = audioSampleRate
+            self.audioBitrate = audioBitrate
+            self.fileType = fileType
+            self.scale = scale
+        }
     }
     
     private let group = DispatchGroup()
