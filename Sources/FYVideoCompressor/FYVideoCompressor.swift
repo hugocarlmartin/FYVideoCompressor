@@ -210,7 +210,14 @@ public class FYVideoCompressor {
         videoInput.transform = videoTrack.preferredTransform // fix output video orientation
         do {
             var outputURL = try FileManager.tempDirectory(with: "CompressedVideo")
-            let videoName = UUID().uuidString + ".\(fileType.fileExtension)"
+            var videoName: String
+
+            if let assetLastPathComponent = (asset as? AVURLAsset)?.url.lastPathComponent {
+                videoName = assetLastPathComponent
+            } else {
+                videoName = UUID().uuidString + ".\(fileType.fileExtension)"
+            }
+
             outputURL.appendPathComponent("\(videoName)")
             
             // store urls for deleting
